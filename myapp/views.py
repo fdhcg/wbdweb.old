@@ -7,13 +7,13 @@ from django.core import serializers
 from django.http import JsonResponse
 
 import json
-import logging
+import os
+
 # Create your views here.
 
 @require_http_methods(["GET"])
 
 def add_label(request):
-
     # try:
     #     f=open('h1.json','r')
     #     logging.debug(f)
@@ -26,12 +26,12 @@ def add_label(request):
 
     # except  Exception as e:
     #     pass
-    f=open('/Users/fdhcg/Desktop/wbdweb/myapp/record/h1.json','r')
+    f=open(os.getcwd()+'/myapp/record/h1.json','r')
 
     load_dict=json.load(f)
     load_dict["label1"]+=1
     f.close()
-    f=open('/Users/fdhcg/Desktop/wbdweb/myapp/record/h1.json','w')
+    f=open(os.getcwd()+'/myapp/record/h1.json','w')
     json.dump(load_dict,f)
     f.close()
     return JsonResponse({"sig": 1},safe=False)
@@ -39,21 +39,7 @@ def add_label(request):
 @require_http_methods(["GET"])
 
 def show_label(request):
-
-    # try:
-    #     f=open('h1.json','r')
-    #     logging.debug(f)
-    #     load_dict=json.load(f)
-    #     load_dict.label1+=1
-    #     f.close()
-    #     f=open('h1.json','w')
-    #     json.dump(load_dict,f)
-    #     f.close()
-
-    # except  Exception as e:
-    #     pass
-    response={}
-    f=open('/Users/fdhcg/Desktop/wbdweb/myapp/record/h1.json','r')
+    f=open(os.getcwd()+'/myapp/record/h1.json','r')
     load_dict=json.load(f)
     f.close()
     return JsonResponse(load_dict,safe=False)
