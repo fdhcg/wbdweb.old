@@ -182,13 +182,15 @@ export default {
   data () {
     return {
       flag1: false,
-      label1: 0
+      label1: 0,
+      backendUrl: ''
     }
   },
   mounted: function () {
     this.$nextTick(function () {
       this.flag1 = true
-      axios.get('http://127.0.0.1:8000/api/show_label').then(response => (this.label1 = response.data.label1))
+      this.backendUrl = this.COMMON.url + ':8000/api'
+      axios.get(this.backendUrl + '/show_label').then(response => (this.label1 = response.data.label1))
     })
   },
   methods: {
@@ -200,8 +202,8 @@ export default {
       })
     },
     add_label () {
-      axios.get('http://127.0.0.1:8000/api/add_label')
-      axios.get('http://127.0.0.1:8000/api/show_label').then(response => (this.label1 = response.data.label1))
+      axios.get(this.backendUrl + '/add_label')
+      axios.get(this.backendUrl + '/show_label').then(response => (this.label1 = response.data.label1))
     }
   }
 }

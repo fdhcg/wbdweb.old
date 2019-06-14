@@ -4,12 +4,14 @@ import Vue from 'vue'
 import Navibar from './components/Navibar'
 import router from './router'
 import App from './App'
+import global from './components/httpUrl'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
+Vue.prototype.COMMON = global
 
 /* eslint-disable*/
 new Vue({
