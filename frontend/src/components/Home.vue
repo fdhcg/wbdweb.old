@@ -7,7 +7,7 @@
               </div>
             </b-col>
             <b-col md="5" order-sm="2">
-              <b-jumbotron bg-variant="secondary" text-variant="white" border-variant="dark">
+              <b-jumbotron  bg-variant="light" text-variant="dark" border-variant="light">
                 <template slot="header">WBD</template>
                 <template slot="lead">
                     search for data?
@@ -16,7 +16,7 @@
                 <b-input-group>
                     <b-form-input placeholder=" "></b-form-input>
                     <b-input-group-append>
-                      <b-button variant="danger" @click="makeToast()">search</b-button>
+                      <b-button variant="secondary" @click="makeToast()">search</b-button>
                       </b-input-group-append>
                     </b-input-group>
                 </b-jumbotron>
@@ -27,67 +27,95 @@
         <transition name="fade">
       <div v-show=flag1 key="pic">
         <b-container>
-          <b-card-group deck class="justify-content-center" >
-            <b-card
-              border-variant="light"
-              img-alt="Image"
-              img-top
-              tag="article"
-              style="max-width: 18rem; "
-              class="mb-2"
-            >
-            <img class="pic" src="../assets/logo.png">
-              <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-              </b-card-text>
-              <b-button href="#" variant="primary">Go somewhere</b-button>
-            </b-card>
-            <b-card
-              border-variant="light"
-              img-alt="Image"
-              img-top
-              tag="article"
-              style="max-width: 18rem; "
-              class="mb-2"
-            >
-            <img class="pic" src="../assets/logo.png">
-              <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-              </b-card-text>
-              <b-button href="#" variant="primary">Go somewhere</b-button>
-            </b-card>
-            <b-card
-              border-variant="light"
-              img-alt="Image"
-              img-top
-              tag="article"
-              style="max-width: 18rem; "
-              class="mb-2"
-            >
-            <img class="pic" src="../assets/logo.png">
-              <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-              </b-card-text>
-              <b-button href="#" variant="primary">Go somewhere</b-button>
-            </b-card>
-          </b-card-group>
-          <!-- <div class="col-md-6">../assets/logo.png
-          <div class="col-md-4"><h3>welcome to the wireless big data website!</h3></div> -->
+          <b-row style="font-size: 20px">
+            <b-col cols="6">
+            <div><h2>Request Data About Wireless Big Data?</h2></div>
+            <div><br/>Not finding the right data?<br/> We can get it for you</div>
+            <div>
+              <b-btn href="#" size="sm" variant="dark">Request Data</b-btn>
+            </div>
+            </b-col>
+            <b-col cols="6">
+              <b-row>
+                <img src="../assets/sec4-4.png" alt="attr2" width="25" height="25" hspace="20" vspace="30">
+                <div>
+                  <h3>some brief </h3>
+                  some brief introduction about attr2
+                  </div>
+              </b-row>
+              <b-row>
+                <img src="../assets/sec4-2.png" alt="attr2" width="25" height="25" hspace="20" vspace="30">
+                <div>
+                  <h3>some brief </h3>
+                 some brief introduction about attr2
+                </div>
+              </b-row>
+              <b-row>
+                <img src="../assets/sec4-1.png" alt="attr2" width="25" height="25" hspace="20" vspace="30">
+                <div>
+                  <h3>some brief </h3>
+                  some brief introduction about attr2
+                </div>
+              </b-row>
+            </b-col>
+          </b-row>
+          <b-row style="font-size: 20pxp; margin-top: 20px">
+            <b-col cols="6">
+              <b-row>
+                <img src="../assets/sec4-4.png" alt="attr2" width="25" height="25" hspace="20" vspace="30">
+                <div>
+                  <h3>some brief </h3>
+                  some brief introduction about attr2
+                  </div>
+              </b-row>
+              <b-row>
+                <img src="../assets/sec4-2.png" alt="attr2" width="25" height="25" hspace="20" vspace="30">
+                <div>
+                  <h3>some brief </h3>
+                 some brief introduction about attr2
+                </div>
+              </b-row>
+              <b-row>
+                <img src="../assets/sec4-1.png" alt="attr2" width="25" height="25" hspace="20" vspace="30">
+                <div>
+                  <h3>some brief </h3>
+                  some brief introduction about attr2
+                </div>
+              </b-row>
+            </b-col>
+            <b-col cols="6">
+            <div><h2>Request Data About Wireless Big Data?</h2></div>
+            <div><br/>Not finding the right data?<br/> We can get it for you</div>
+            <div>
+              <b-btn href="#" size="sm" variant="dark">Request Data</b-btn>
+            </div>
+            </b-col>
+          </b-row>
+          <div class="text-center">
+           <b-spinner label="Spinning"></b-spinner>
+           <b-spinner type="grow" label="Spinning"></b-spinner>
+           <b-spinner variant="primary" label="Spinning"></b-spinner>
+           <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+           <b-spinner variant="success" label="Spinning"></b-spinner>
+           <b-spinner variant="success" type="grow" label="Spinning"></b-spinner>
+          </div>
         </b-container>
         </div>
           </transition>
-          <div class="intro1">
+          <div data-wow-delay="0.5s">
+          <div class="intro1 wow slideInLeft">
             <div><h1>WBD</h1></div>
           </div>
-           <div class="intro2">
+           <div class="intro2 wow slideInRight">
             <h1>WBD</h1>
            </div>
-            <div class="intro3">
+            <div class="intro3 wow slideInLeft">
             <h1>WBD</h1>
             </div>
             <div class="intro-end">
             </div>
-            <div class="endblock">
+          </div>
+          <div class="endblock">
             <b-container>
               <b-row >
                 <b-col cols="12">
@@ -171,7 +199,7 @@
                 </b-col>
               </b-row>
         </b-container>
-            </div>
+          </div>
   </div>
 </template>
 

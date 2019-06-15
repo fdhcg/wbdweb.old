@@ -8,6 +8,9 @@ import global from './components/httpUrl'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'animate.css'
+import {WOW} from 'wowjs'
+new WOW({live: false}).init()
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
