@@ -178,7 +178,7 @@
             <b-list-group-item href="#" class="flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">Disabled List group item</h5>
-      <small @click="add_label()" class="text-muted">{{label1}}</small>
+      <small @click="post_label()" class="text-muted">{{label1}}</small>
     </div>
 
     <p class="mb-1">
@@ -228,6 +228,9 @@ export default {
         autoHideDelay: 5000,
         appendToast: append
       })
+    },
+    post_label () {
+      axios.post(this.backendUrl + '/pull_data', {'target': 'data'}).then(response => (this.label1 = response.data))
     },
     add_label () {
       axios.get(this.backendUrl + '/add_label')

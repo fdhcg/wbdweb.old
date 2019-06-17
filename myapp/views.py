@@ -26,12 +26,12 @@ def add_label(request):
 
     # except  Exception as e:
     #     pass
-    f=open(os.getcwd()+'/myapp/record/h1.json','r')
+    f=open(os.getcwd()+'/myapp/data/h1.json','r')
 
     load_dict=json.load(f)
     load_dict["label1"]+=1
     f.close()
-    f=open(os.getcwd()+'/myapp/record/h1.json','w')
+    f=open(os.getcwd()+'/myapp/data/h1.json','w')
     json.dump(load_dict,f)
     f.close()
     return JsonResponse({"sig": 1},safe=False)
@@ -39,8 +39,21 @@ def add_label(request):
 @require_http_methods(["GET"])
 
 def show_label(request):
-    f=open(os.getcwd()+'/myapp/record/h1.json','r')
+    f=open(os.getcwd()+'/myapp/data/h1.json','r')
     load_dict=json.load(f)
     f.close()
     return JsonResponse(load_dict,safe=False)
+
+@require_http_methods(["POST"])
+def pull_data(request):
+    f=open(os.getcwd()+'/myapp/data/datalist.json','r')
+    load_dict=json.load(f)
+    f.close()
+    target=json.loads(request.body)
+    result_dict={}
+    for key,value in load_dict.items():
+        if  target["target"] in key:
+            item={key:value}
+            result_dict.update(item)
+    return JsonResponse(result_dict,safe=False)
 
