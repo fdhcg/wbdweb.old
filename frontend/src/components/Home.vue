@@ -14,9 +14,9 @@
                 </template>
                 <hr class="my-4">
                 <b-input-group>
-                    <b-form-input placeholder=" "></b-form-input>
+                    <b-form-input v-model="keyword" placeholder="search" ></b-form-input>
                     <b-input-group-append>
-                      <b-button variant="secondary" @click="makeToast()">search</b-button>
+                      <b-button variant="secondary"  @click="DoOrNot()">search</b-button>
                       </b-input-group-append>
                     </b-input-group>
                 </b-jumbotron>
@@ -178,7 +178,7 @@
             <b-list-group-item href="#" class="flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">Disabled List group item</h5>
-      <small @click="post_label()" class="text-muted">{{label1}}</small>
+      <small @click="add_label()" class="text-muted">{{label1}}</small>
     </div>
 
     <p class="mb-1">
@@ -211,7 +211,8 @@ export default {
     return {
       flag1: false,
       label1: 0,
-      backendUrl: ''
+      backendUrl: '',
+      keyword: ''
     }
   },
   mounted: function () {
@@ -223,15 +224,27 @@ export default {
   },
   methods: {
     makeToast (append = false) {
-      this.$bvToast.toast(`Nothing yet!`, {
-        title: 'BootstrapVue Toast',
+      this.$bvToast.toast(`尚未输入关键字！`, {
+        title: '无搜索结果',
         autoHideDelay: 5000,
         appendToast: append
       })
     },
-    post_label () {
-      axios.post(this.backendUrl + '/pull_data', {'target': 'data'}).then(response => (this.label1 = response.data))
+    update_key () {
+      this.COMMON.keyword = this.keyword
     },
+    DoOrNot () {
+      if (this.keyword !== '') {
+        this.update_key()
+        window.location.assign('#/data')
+      } else {
+        this.makeToast()
+        window.location.assign('#')
+      }
+    },
+    // post_label () {
+    //   axios.post(this.backendUrl + '/pull_data', {'target': this.COMMON.keyword}).then(response => (this.label1 = response.data))
+    // },
     add_label () {
       axios.get(this.backendUrl + '/add_label')
       axios.get(this.backendUrl + '/show_label').then(response => (this.label1 = response.data.label1))

@@ -50,10 +50,13 @@ def pull_data(request):
     load_dict=json.load(f)
     f.close()
     target=json.loads(request.body)
-    result_dict={}
-    for key,value in load_dict.items():
-        if  target["target"] in key:
-            item={key:value}
-            result_dict.update(item)
-    return JsonResponse(result_dict,safe=False)
+    if target["target"]=='*':
+        return JsonResponse(load_dict,safe=False)
+    else:
+        result_dict={}
+        for key,value in load_dict.items():
+            if target["target"] in key:
+                item={key:value}
+                result_dict.update(item)
+        return JsonResponse(result_dict,safe=False)
 

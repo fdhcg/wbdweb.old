@@ -21,44 +21,12 @@
   </b-jumbotron>
     <b-container >
  <b-list-group >
-  <b-list-group-item href="#" class="flex-column align-items-start">
+  <b-list-group-item v-for="item in data_list" :key="item" href="#" class="flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <h5 @click="addcount( )"><b-badge pill variant="primary">{{count}}</b-badge></h5>
-    </div>
-
-    <p class="mb-1">
-      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-    </p>
-    <small>Donec id elit non mi porta.</small><br/><br/>
-    <b-button pill size="sm" variant="outline-primary">Download</b-button>
-  </b-list-group-item>
-
-  <b-list-group-item href="#" class="flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
+      <h5 class="mb-1">{{item.title}}</h5>
       <small class="text-muted">3 days ago</small>
     </div>
-
-    <p class="mb-1">
-      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-    </p>
-
-    <small class="text-muted">Donec id elit non mi porta.</small><br/><br/>
-    <b-button pill size="sm" variant="outline-secondary">Download</b-button>
-  </b-list-group-item>
-
-  <b-list-group-item href="#" class="flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Disabled List group item</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-
-    <p class="mb-1">
-      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-    </p>
-
-    <small class="text-muted">Donec id elit non mi porta.</small><br/><br/>
+    <p>origin={{item.origin}}</p>
     <b-button pill size="sm" variant="outline-success">Download</b-button>
   </b-list-group-item>
 </b-list-group>
@@ -66,12 +34,23 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   name: 'Data',
   data () {
     return {
-      count: 1
+      backendUrl: ' ',
+      keyword: ' ',
+      data_list: ' '
     }
+  },
+  mounted: function () {
+    this.$nextTick(function () {
+      this.backendUrl = this.COMMON.url + ':8000/api'
+      this.keyword = this.COMMON.keyword
+
+      axios.post(this.backendUrl + '/pull_data', {'target': this.keyword}).then(response => (this.data_list = response.data))
+    })
   },
   methods: {
     addcount () {
