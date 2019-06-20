@@ -16,7 +16,7 @@
                 <b-input-group>
                     <b-form-input v-model="keyword" placeholder="search" ></b-form-input>
                     <b-input-group-append>
-                      <b-button variant="secondary"  @click="DoOrNot()">search</b-button>
+                      <b-button variant="secondary"  @click="search()">search</b-button>
                       </b-input-group-append>
                     </b-input-group>
                 </b-jumbotron>
@@ -59,7 +59,7 @@
               </b-row>
             </b-col>
           </b-row>
-          <b-row style="font-size: 20pxp; margin-top: 20px">
+          <!-- <b-row style="font-size: 20pxp; margin-top: 20px">
             <b-col cols="6">
               <b-row>
                 <img src="../assets/sec4-4.png" alt="attr2" width="25" height="25" hspace="20" vspace="30">
@@ -90,19 +90,19 @@
               <b-btn href="#" size="sm" variant="dark">Request Data</b-btn>
             </div>
             </b-col>
-          </b-row>
-          <div class="text-center">
+          </b-row> -->
+          <!-- <div class="text-center">
            <b-spinner label="Spinning"></b-spinner>
            <b-spinner type="grow" label="Spinning"></b-spinner>
            <b-spinner variant="primary" label="Spinning"></b-spinner>
            <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
            <b-spinner variant="success" label="Spinning"></b-spinner>
            <b-spinner variant="success" type="grow" label="Spinning"></b-spinner>
-          </div>
+          </div> -->
         </b-container>
         </div>
           </transition>
-          <div data-wow-delay="0.5s">
+          <div data-wow-delay="0.5s" style="margin-top: 50px">
           <div class="intro1 wow slideInLeft">
             <div><h1>WBD</h1></div>
           </div>
@@ -115,7 +115,7 @@
             <div class="intro-end">
             </div>
           </div>
-          <div class="endblock">
+          <!-- <div class="endblock">
             <b-container>
               <b-row >
                 <b-col cols="12">
@@ -199,7 +199,7 @@
                 </b-col>
               </b-row>
         </b-container>
-          </div>
+          </div> -->
   </div>
 </template>
 
@@ -230,12 +230,12 @@ export default {
         appendToast: append
       })
     },
-    update_key () {
+    updateKey () {
       this.COMMON.keyword = this.keyword
     },
-    DoOrNot () {
+    search () {
       if (this.keyword !== '') {
-        this.update_key()
+        this.updateKey()
         window.location.assign('#/data')
       } else {
         this.makeToast()

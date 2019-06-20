@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Data from '@/components/Data'
-import Docs from '@/components/Docs'
-import Research from '@/components/Research'
-import Zeppelin from '@/components/Zeppelin'
-import About from '@/components/About'
+import Home from '@/views/Home'
+import Data from '@/views/Data'
+import Docs from '@/views/Docs'
+import Research from '@/views/Research'
+import Zeppelin from '@/views/Zeppelin'
+import About from '@/views/About'
 
 Vue.use(Router)
 
