@@ -9,7 +9,7 @@
             <b-col md="5" order-sm="2">
               <b-jumbotron  bg-variant="light" text-variant="dark" border-variant="light">
                 <template slot="header">WBD</template>
-                <template slot="lead">
+                <template slot="lead">{{label1}}
                     search for data?
                 </template>
                 <hr class="my-4">
@@ -210,7 +210,7 @@ export default {
   data () {
     return {
       flag1: false,
-      label1: 0,
+      label1: 1,
       backendUrl: '',
       keyword: ''
     }
@@ -218,8 +218,8 @@ export default {
   mounted: function () {
     this.$nextTick(function () {
       this.flag1 = true
-      this.backendUrl = this.COMMON.url + ':8000/api'
-      axios.get(this.backendUrl + '/show_label').then(response => (this.label1 = response.data.label1))
+      this.backendUrl = this.COMMON.url
+      axios.get(this.backendUrl + '/api/show_label').then(response => (this.label1 = response.data.label1))
     })
   },
   methods: {
@@ -246,8 +246,8 @@ export default {
     //   axios.post(this.backendUrl + '/pull_data', {'target': this.COMMON.keyword}).then(response => (this.label1 = response.data))
     // },
     add_label () {
-      axios.get(this.backendUrl + '/add_label')
-      axios.get(this.backendUrl + '/show_label').then(response => (this.label1 = response.data.label1))
+      axios.get(this.backendUrl + '/api/add_label')
+      axios.get(this.backendUrl + '/api/show_label').then(response => (this.label1 = response.data.label1))
     }
   }
 }

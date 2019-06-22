@@ -62,10 +62,10 @@ export default {
   },
   mounted: function () {
     this.$nextTick(function () {
-      this.backendUrl = this.COMMON.url + ':8000/api'
+      this.backendUrl = this.COMMON.url
       this.keyword = this.COMMON.keyword
 
-      axios.post(this.backendUrl + '/pull_data', {'target': this.keyword}).then(response => (this.data_list = response.data))
+      axios.post(this.backendUrl + '/api/pull_data', {'target': this.keyword}).then(response => (this.data_list = response.data))
     })
   },
   methods: {
@@ -90,7 +90,7 @@ export default {
     search () {
       if (this.keyword_ !== '') {
         this.update_key()
-        axios.post(this.backendUrl + '/pull_data', {'target': this.keyword}).then(response => (this.data_list = response.data))
+        axios.post(this.backendUrl + '/api/pull_data', {'target': this.keyword}).then(response => (this.data_list = response.data))
       } else {
         this.makeToast()
         window.location.assign('#')
@@ -99,7 +99,7 @@ export default {
     erease () {
       this.COMMON.keyword = '*'
       this.keyword = '*'
-      axios.post(this.backendUrl + '/pull_data', {'target': this.keyword}).then(response => (this.data_list = response.data))
+      axios.post(this.backendUrl + '/api/pull_data', {'target': this.keyword}).then(response => (this.data_list = response.data))
     }
   }
 }
